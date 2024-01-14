@@ -33,7 +33,7 @@ function Registration() {
         role: role,
       });
 
-      alert('Registration Successfully');
+      alert('Regjistrimi u shtua me sukses!');
       setMessage(response.data);
       setId('');
       setName('');

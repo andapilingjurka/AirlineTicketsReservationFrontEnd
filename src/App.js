@@ -11,6 +11,7 @@ import Home from "./Admin/Home";
 import Shtetet from "./Admin/ShtetiAdmin";
 import Qytetet from "./Admin/QytetiAdmin";
 import LoginForm from "./components/LoginRegister/LoginForm";
+import Registration from "./components/LoginRegister/Registration";
 
 function App() {
   const [toggle, setToggle] = useState(true);
@@ -39,10 +40,11 @@ function App() {
           <div className="col">
             <Nav Toggle={Toggle} />
             <Routes>
-            <Route path="/login" element={<LoginForm />} />
               <Route path="/" element={<Dashboard />} />
               <Route path="/home" element={<Home />} />
               {/* Perdoruesit url*/}
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/login" element={<LoginForm />} />
               <Route path="/shtetet" element={<Shtetet />} />
               <Route path="/qytetet" element={<Qytetet />} />
               {/* Aeroplanet url*/}
