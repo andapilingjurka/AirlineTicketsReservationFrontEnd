@@ -10,6 +10,7 @@ import Nav from "./Admin/Nav";
 import Home from "./Admin/Home";
 import Shtetet from "./Admin/ShtetiAdmin";
 import Qytetet from "./Admin/QytetiAdmin";
+import LoginForm from "./components/LoginRegister/LoginForm";
 
 function App() {
   const [toggle, setToggle] = useState(true);
@@ -38,6 +39,7 @@ function App() {
           <div className="col">
             <Nav Toggle={Toggle} />
             <Routes>
+            <Route path="/login" element={<LoginForm />} />
               <Route path="/" element={<Dashboard />} />
               <Route path="/home" element={<Home />} />
               {/* Perdoruesit url*/}

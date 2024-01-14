@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 import { decodeToken } from './jwtUtils';
 import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './style.css';
+import './login.css';
+import login from './login.jpg'; 
 
-import login3 from './login3.jpg'; 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +32,7 @@ function LoginForm() {
       });
 
       const { token } = response.data;
-localStorage.setItem('token', token);
+    localStorage.setItem('token', token);
       setMessage('Login successful');
 
       const role = decodeToken(token).role;
@@ -56,7 +55,7 @@ localStorage.setItem('token', token);
     <div className="row border rounded-5 p-3 bg-white shadow box-area">
       <div className="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style={{ background: '#FFFFFF' }}>
         <div className="featured-imagee mb-3">
-        <img src={login3} className="img-fluid1" style={{ width: '100%' }} alt="Featured" />
+        <img src={login} className="img-fluid1" style={{ width: '100%' }} alt="Featured" />
         </div>
          
         </div>
