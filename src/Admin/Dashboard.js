@@ -1,6 +1,9 @@
 import React from "react";
 import "./style.css";
 
+import chart from "../images/chart.png";
+import calendar from "../images/calendar.png";
+
 function Dashboard() {
   return (
     <div className="px-3">
