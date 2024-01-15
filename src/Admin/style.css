@@ -1,0 +1,12 @@
+/*Sidebar*/
+.list-group a:hover{
+    background-color: #73C2FB;
+    color: white;
+    cursor: pointer;
+}
+
+.active-link {
+    background-color: #004687; 
+    color: white;
+    font-weight: bold;
+  }
