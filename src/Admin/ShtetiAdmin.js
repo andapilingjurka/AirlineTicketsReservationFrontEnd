@@ -16,7 +16,7 @@ function Shtetet() {
   async function Load() {
     try {
       const result = await axios.get(
-        "https://localhost:7239/api/Shteti/GetAllList"
+        "https://localhost:7285/api/Shteti/GetAllList"
       );
       setShtetet(result.data);
       console.log(result.data);
@@ -28,7 +28,7 @@ function Shtetet() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("https://localhost:7239/api/Shteti/Add", {
+      await axios.post("https://localhost:7285/api/Shteti/Add", {
         emri: emri,
       });
       showAndHideAlert("Shteti është regjistruar me sukses!");
@@ -47,7 +47,7 @@ function Shtetet() {
 
   async function deleteShteti(id) {
     try {
-      await axios.delete(`https://localhost:7239/api/Shteti/Delete?Id=${id}`);
+      await axios.delete(`https://localhost:7285/api/Shteti/Delete?Id=${id}`);
       showAndHideAlert("Shteti është fshir me sukses!");
       setId("");
       setEmri("");
@@ -61,7 +61,7 @@ function Shtetet() {
     event.preventDefault();
     try {
       const shteti = shtetet.find((p) => p.id === id);
-      await axios.put(`https://localhost:7239/api/Shteti/Update/${shteti.id}`, {
+      await axios.put(`https://localhost:7285/api/Shteti/Update/${shteti.id}`, {
         id: shteti.id,
         emri: emri,
       });

@@ -27,7 +27,7 @@ function Qytetet() {
   async function loadStates() {
     try {
       const result = await axios.get(
-        "https://localhost:7239/api/Shteti/GetAllList"
+        "https://localhost:7285/api/Shteti/GetAllList"
       );
       setStates(result.data);
     } catch (err) {
@@ -38,7 +38,7 @@ function Qytetet() {
   async function loadCities() {
     try {
       const result = await axios.get(
-        "https://localhost:7239/api/Qyteti/GetAllList"
+        "https://localhost:7285/api/Qyteti/GetAllList"
       );
       setQytetet(result.data);
     } catch (err) {
@@ -63,7 +63,7 @@ function Qytetet() {
   async function filterQyteti(orderBy) {
     try {
       const result = await axios.get(
-        `https://localhost:7239/api/Qyteti/GetFilteredQyteti?orderBy=${orderBy}`
+        `https://localhost:7285/api/Qyteti/GetFilteredQyteti?orderBy=${orderBy}`
       );
       setQytetet(result.data);
     } catch (err) {
@@ -77,7 +77,7 @@ function Qytetet() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("https://localhost:7239/api/Qyteti/Add", {
+      await axios.post("https://localhost:7285/api/Qyteti/Add", {
         emri: emri,
         zipCode: zipCode,
         image: image,
@@ -113,7 +113,7 @@ function Qytetet() {
   async function deleteQyteti(cityId) {
     try {
       await axios.delete(
-        `https://localhost:7239/api/Qyteti/Delete?Id=${cityId}`
+        `https://localhost:7285/api/Qyteti/Delete?Id=${cityId}`
       );
       showAndHideAlert("Qyteti është fshir me sukses!");
       clearForm();
@@ -127,7 +127,7 @@ function Qytetet() {
     event.preventDefault();
     try {
       const qyteti = qytetet.find((p) => p.id === id);
-      await axios.put(`https://localhost:7239/api/Qyteti/Update/${qyteti.id}`, {
+      await axios.put(`https://localhost:7285/api/Qyteti/Update/${qyteti.id}`, {
         id: qyteti.id,
         emri: emri,
         zipCode: zipCode,
