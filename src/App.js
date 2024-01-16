@@ -9,6 +9,7 @@ import Qytetet from "./Admin/QytetiAdmin";
 import LoginForm from "./components/LoginRegister/LoginForm";
 import Registration from "./components/LoginRegister/Registration";
 import Home from "./components/Home/Home";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/aboutus" element={<AboutUs />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<LoginForm />} />
