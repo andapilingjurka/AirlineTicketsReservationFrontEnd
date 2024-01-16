@@ -10,17 +10,18 @@ import LoginForm from "./components/LoginRegister/LoginForm";
 import Registration from "./components/LoginRegister/Registration";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
+import Kontakti from "./components/Kontakti/Kontakti";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/registration" element={<Registration />} />
         <Route path="/aboutus" element={<AboutUs />} />
-
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/contact" element={<Kontakti />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/shtetet" element={<Shtetet />} />
         <Route path="/qytetet" element={<Qytetet />} />
       </Routes>
