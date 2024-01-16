@@ -19,7 +19,7 @@ function Kontakti() {
 
   async function Load() {
     try {
-      const result = await axios.get('https://localhost:7286/api/Kontakt/GetAllList');
+      const result = await axios.get('https://localhost:7054/api/Kontakt/GetAllList');
       setUsers(result.data);
       console.log(result.data);
     } catch (error) {
@@ -30,7 +30,7 @@ function Kontakti() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post('https://localhost:7286/api/Kontakt/Add', {
+      await axios.post('https://localhost:7054/api/Kontakt/Add', {
         id:id,
         emri: emri,
         emaili: emaili,
