@@ -66,7 +66,7 @@ const Aeroportet = () => {
       <ul className='aeroportet-ul'>
         {airports.map((airport, index) => (
           <li className='aeroportet-li' key={index}>
-            <a href={airport.airportLink}>Airport: {airport.airportName}</a>
+            <a className='aeroportet.a' href={airport.airportLink}>Airport: {airport.airportName}</a>
           </li>
         ))}
       </ul>

@@ -1,27 +1,30 @@
- h1 {
+ .aeroporti{
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+ .aeroportet-h1 {
     color: #333;
     text-align: center;
   }
-  
-  ul {
+  .aeroportet-ul {
     list-style-type: none;
     padding: 0;
   }
-  
-  li {
+  .aeroportet-li {
     margin-bottom: 10px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
   }
-  
-  a {
+  .aeroportet-a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
   }
-  
-  a:hover {
+  .aeroportet-a:hover {
     text-decoration: underline;
   }
