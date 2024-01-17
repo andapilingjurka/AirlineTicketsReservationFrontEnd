@@ -15,7 +15,7 @@ function Sidebar() {
       <hr className="text-dark" />
       <div className="list-group list-group-flush">
         <Link
-          to="/"
+          to="/dashboard"
           className={`list-group-item py-2 ${
             location.pathname === "/dashboard" ? "active-link" : ""
           }`}
