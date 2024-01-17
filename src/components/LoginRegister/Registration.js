@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './register.css';
-import register from './register.jpg'; // Import your image file
+import register from './register.jpg';
 
+
+
+const isEmailValid = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 function Registration() {
   const [Id, setId] = useState('');
   const [FirstName, setName] = useState('');
@@ -15,25 +21,42 @@ function Registration() {
   const [role, setrole] = useState('client');
   const [message, setMessage] = useState('');
 
+  const validateForm = () => {
+    if (!FirstName.trim() || !LastName.trim() || !Email.trim() || !Password.trim() || !confirmPassword.trim()) {
+      alert('Ju lutem plotësoni të gjitha hapësirat e zbrazta!');
+      return false;
+    }
+
+    if (!isEmailValid(Email)) {
+      alert('Formati i email-it nuk është i saktë!');
+      return false;
+    }
+
+    if (Password !== confirmPassword) {
+      alert('Fjalëkalimet nuk përputhen!');
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Compare the values and show an error message if they don't match
-    if (Password !== confirmPassword) {
-      setMessage('Fjalekalimi nuk perputhet!');
+
+    if (!validateForm()) {
       return;
     }
 
     try {
       const response = await axios.post('https://localhost:7285/api/Perdoruesi/Register', {
-        FirstName: FirstName,
-        Email: Email,
-        Password: Password,
-        LastName: LastName,
+        FirstName: FirstName.trim(),
+        Email: Email.trim(),
+        Password: Password.trim(),
+        LastName: LastName.trim(),
         role: role,
       });
 
-      alert('Regjistrimi u shtua me sukses!');
+      alert('Regjistrimi u krye me sukses');
       setMessage(response.data);
       setId('');
       setName('');
@@ -43,7 +66,8 @@ function Registration() {
       setconfirmpassword('');
       setrole('');
     } catch (err) {
-      alert(err.response.data);
+      console.error(err);
+      alert('Gabim gjatë regjistrimit. Ju lutem provoni përsëri.');
     }
   };
 
@@ -114,9 +138,7 @@ function Registration() {
                 />
               </div>
               <div className="input-group mb-3">
-                <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
-                  Regjistrohuni
-                </button>
+              <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">Regjistrohuni</button>
               </div>
               <div className="row">
                 <small>Keni tashmë një llogari?<Link to="/login">Kyqu</Link></small>

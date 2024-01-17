@@ -43,16 +43,16 @@ textarea {
 
 /* Style for the user icon */
 .input-group-prepend .input-group-text i.fa-user {
-  font-size: 1.2em; /* Adjust the font size as needed */
+  font-size: 1.2em; 
 }
 
 /* Style for the email icon */
 .input-group-prepend .input-group-text i.fa-envelope {
-  font-size: 1.2em; /* Adjust the font size as needed */
+  font-size: 1.2em; 
 }
 
 /* Style for the comment icon */
 .input-group-prepend .input-group-text i.fa-comment {
-  font-size: 1.2em; /* Adjust the font size as needed */
+  font-size: 1.2em; 
 }
 
