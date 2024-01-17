@@ -17,7 +17,7 @@ function Sidebar() {
         <Link
           to="/"
           className={`list-group-item py-2 ${
-            location.pathname === "/" ? "active-link" : ""
+            location.pathname === "/dashboard" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-bar-chart-line fs-5 me-3"></i>{" "}
