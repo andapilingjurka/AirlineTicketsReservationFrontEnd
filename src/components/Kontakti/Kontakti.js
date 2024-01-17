@@ -69,7 +69,7 @@ function Kontakti() {
                   <h3>
                     <i className="fa fa-envelope"></i> Na Kontaktoni
                   </h3>
-                  <p className="m-0">Ne jemi te lumtur te ju ndihmojme!</p>
+                  <p className="m-0">Ne jemi të lumtur të ju ndihmojmë!</p>
                 </div>
               </div>
               <div className="card-body p-3">

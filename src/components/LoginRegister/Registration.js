@@ -114,7 +114,7 @@ function Registration() {
                 <input
                   type="email"
                   className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Emaili"
+                  placeholder="Email"
                   value={Email}
                   onChange={(event) => setemail(event.target.value)}
                 />
