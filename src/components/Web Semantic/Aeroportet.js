@@ -61,11 +61,11 @@ const Aeroportet = () => {
   };
 
   return (
-    <div>
-      <h1>Aeroportet në Botë</h1>
-      <ul>
+    <div className="aeroporti">
+      <h1 className='aeroportet-h1'>Aeroportet në Botë</h1>
+      <ul className='aeroportet-ul'>
         {airports.map((airport, index) => (
-          <li key={index}>
+          <li className='aeroportet-li' key={index}>
             <a href={airport.airportLink}>Airport: {airport.airportName}</a>
           </li>
         ))}
