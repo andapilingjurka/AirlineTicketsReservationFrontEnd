@@ -1,7 +1,7 @@
 import React from "react";
 
-import Nav from "./Nav";
-import Sidebar from "./Sidebar";
+import Nav from "./include/Nav";
+import Sidebar from "./include/Sidebar";
 import { useState } from "react";
 
 import chart from "../images/chart.png";

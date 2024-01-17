@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Nav from "./Nav";
-import Sidebar from "./Sidebar";
+import Nav from "./include/Nav";
+import Sidebar from "./include/Sidebar";
 
 function Shtetet() {
   const [toggle, setToggle] = useState(true);

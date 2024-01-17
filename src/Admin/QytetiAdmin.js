@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 
-import Nav from "./Nav";
-import Sidebar from "./Sidebar";
+import Nav from "./include/Nav";
+import Sidebar from "./include/Sidebar";
 
 function Qytetet() {
   const [toggle, setToggle] = useState(true);
