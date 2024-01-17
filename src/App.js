@@ -4,11 +4,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Dashboard from "./Admin/Dashboard";
-import Home from "./Admin/Home";
 import Shtetet from "./Admin/ShtetiAdmin";
 import Qytetet from "./Admin/QytetiAdmin";
 import LoginForm from "./components/LoginRegister/LoginForm";
 import Registration from "./components/LoginRegister/Registration";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
