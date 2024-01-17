@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './aboutus.css';
 import airline from "./airline.mp4";
@@ -8,9 +8,21 @@ import photo2 from "./photo2.jpg";
 import photo3 from "./photo3.jpg";
 import photo4 from "./photo4.jpg";
 
-
+import StarRating from './StarRating';
+import { useRating } from './RatingContext';
 
 const AboutUs = () => {
+  const { userRating, setUserRating, adminRating, setAdminRating } = useRating();
+  const [hasRated, setHasRated] = useState(false);
+
+  const handleRatingChange = (rating) => {
+    if (!hasRated) {
+      setUserRating(rating);
+      setAdminRating(rating);
+      setHasRated(true);
+    }
+  };
+
   return (
     <div>
       <div className="video-container">
@@ -104,7 +116,14 @@ const AboutUs = () => {
   </div>
 
 </div>
+      
+      {hasRated ? (
+      <p style={{ textAlign: 'center',fontFamily: '"Times New Roman", Times, serif', fontWeight: 'bold'  }}>Ju faleminderit që na vlerësuat!</p>
+      ) : (
+        <StarRating onRatingChange={handleRatingChange} />
+      )}
 </div>
+
   );
 };
 
