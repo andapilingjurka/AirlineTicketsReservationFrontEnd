@@ -1,19 +1,25 @@
-import React from "react";
-
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
-import { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import chart from "../images/chart.png";
 import calendar from "../images/calendar.png";
+import { useRating } from '../components/AboutUs/RatingContext';
 
 function Dashboard() {
   const [toggle, setToggle] = useState(true);
+  const { userRating, setUserRating, adminRating } = useRating();
+
 
   const Toggle = () => {
     setToggle(!toggle);
   };
-
+  useEffect(() => {
+    // Fetch user rating from the server or any other storage method
+    // For now, we'll just set it to 0 if it's undefined
+    if (userRating === undefined) {
+      setUserRating(0);
+    }
+  }, [userRating, setUserRating]);
   return (
     <div
       className="container-fluid"
@@ -103,6 +109,11 @@ function Dashboard() {
                   />
                 </div>
               </div>
+              
+        {/* Display the admin's rating */}
+        <p>Admin Rating: {adminRating} stars</p>
+        <p>Rating as Percentage: {adminRating * 20}%</p>
+
             </div>
           </div>
         </div>
