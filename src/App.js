@@ -11,6 +11,7 @@ import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Kontakti from "./components/Kontakti/Kontakti";
 import { RatingProvider } from './components/AboutUs/RatingContext';  // Adjust the path
+import Kontaktet from "./Admin/Kontaktet";
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/shtetet" element={<Shtetet />} />
         <Route path="/qytetet" element={<Qytetet />} />
+        <Route path="/kontaktet" element={<Kontaktet />} />
+
       </Routes>
       </RatingProvider>
 

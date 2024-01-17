@@ -89,9 +89,9 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/kontakti"
+          to="/kontaktet"
           className={`list-group-item py-2 ${
-            location.pathname === "/kontakti" ? "active-link" : ""
+            location.pathname === "/kontaktet" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-chat-dots fs-5 me-3"></i> <span>Mesazhet</span>
