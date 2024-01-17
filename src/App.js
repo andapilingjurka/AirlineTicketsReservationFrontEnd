@@ -13,6 +13,7 @@ import Kontakti from "./components/Kontakti/Kontakti";
 import { RatingProvider } from './components/AboutUs/RatingContext';  // Adjust the path
 import Kontaktet from "./Admin/Kontaktet";
 import Perdoruesit from "./Admin/Perdoruesit";
+import Aeroportet from "./components/Web Semantic/Aeroportet";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
         <Route path="/qytetet" element={<Qytetet />} />
         <Route path="/kontaktet" element={<Kontaktet />} />
         <Route path="/perdoruesit" element={<Perdoruesit/>} />
+        <Route path="/aeroportet" element={<Aeroportet/>} />
+
 
 
       </Routes>
