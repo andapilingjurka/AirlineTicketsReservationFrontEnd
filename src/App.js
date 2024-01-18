@@ -16,6 +16,7 @@ import Perdoruesit from "./Admin/Perdoruesit";
 import Aeroportet from "./components/Web Semantic/Aeroportet";
 import CityList from "./components/Qytetet/Qytetet";
 import ShtetetSemantic from "./components/Web Semantic/Shtetet";
+import Aeroplanet from "./Admin/AeroplaniAdmin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/shtetet" element={<Shtetet />} />
           <Route path="/qytetet" element={<Qytetet />} />
+          <Route path="/aeroplanet" element={<Aeroplanet />} />
           <Route path="/kontaktet" element={<Kontaktet />} />
           <Route path="/perdoruesit" element={<Perdoruesit />} />
           <Route path="/aeroportet" element={<Aeroportet />} />
