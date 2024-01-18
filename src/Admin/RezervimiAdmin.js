@@ -163,7 +163,275 @@ function Rezervimet() {
   }
 
   return (
- 
+    <div className="container-fluid" style={{ backgroundColor: "#004687", minHeight: "100vh", backgroundSize: "cover" }}>
+      <div className="row">
+        {toggle && (
+          <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
+            <Sidebar />
+          </div>
+        )}
+
+        <div className="col-4 col-md-2"></div>
+        <div className="col">
+          <Nav Toggle={Toggle} />
+
+          <div>
+            <h4 className="description">Të dhënat për Rezervime</h4>
+            <div className="container mt-4">
+              <form>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="id"
+                    hidden
+                    value={id}
+                    onChange={(event) => {
+                      setId(event.target.value);
+                    }}
+                  />
+                  <div className="form-group">
+                  <label className="label">Emri i Pasagjerit</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="emriPasagjerit"
+                    value={emriPasagjerit}
+                    onChange={(event) => {
+                      setEmriPasagjerit(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="label">Mbiemri i Pasagjerit</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="mbiemriPasagjerit"
+                    value={mbiemriPasagjerit}
+                    onChange={(event) => {
+                      setMbiemriPasagjerit(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="label">Email</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="email"
+                    value={email}
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
+                  />
+                </div>
+                  <label className="label">Klasi</label>
+                  <select
+                    className="form-control"
+                    id="klasi"
+                    value={klasi}
+                    onChange={(event) => {
+                      setKlasi(event.target.value);
+                    }}
+                  >
+                    <option value="">Select class</option>
+                    <option value="Economic">Economic</option>
+                    <option value="Business">Business</option>
+                    <option value="VIP">VIP</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="label">Cmimi</label>
+                  <input disabled
+                    type="text"
+                    className="form-control"
+                    id="cmimi"
+                    value={cmimi}
+                    onChange={(event) => {
+                      setCmimi(event.target.value);
+                    }}
+                  />
+                </div>
+                
+
+                <div className="form-group">
+              <label className="label mr-4" style={{ marginRight: '10px' }} >Currency</label>
+              <div className="form-check form-check-inline ml-2">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="eurCheckbox"
+                  checked={currency === "EUR"}
+                  onChange={() => setCurrency("EUR")}
+                />
+                <label className="form-check-label white-text" htmlFor="eurCheckbox" style={{color: 'white'}}>
+                  EUR
+                </label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="usdCheckbox"
+                  checked={currency === "USD"}
+                  onChange={() => setCurrency("USD")}
+                />
+                <label className="form-check-label white-text" htmlFor="usdCheckbox" style={{color: 'white'}}>
+                  USD
+                </label>
+              </div>
+            </div>
+
+                <div className="form-group" >
+                  <label className="label" style={{ marginRight: '10px' }}>Kthyese</label>
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="kthyese"
+                    checked={kthyese}
+                    onChange={(event) => {
+                      setKthyese(event.target.checked);
+                    }}
+                  />
+                </div>
+
+                {/* Conditionally render "Data e Kthimit" input */}
+                {kthyese && (
+                  <div className="form-group">
+                    <label className="label">Data e Kthimit</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="data_e_Kthimit"
+                      value={data_e_Kthimit}
+                      onChange={(event) => {
+                        setDataEKthimit(event.target.value);
+                      }}
+                    />
+                  </div>
+                )}
+                <div className="form-group">
+                  <label className="label">Data e Rezervimit</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="data_e_Rezervimit"
+                    value={data_e_Rezervimit}
+                    onChange={(event) => {
+                      setDataERezervimit(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="label" >Fluturimi</label>
+                  <select style={{ color: 'black' }}
+                    className="form-control"
+                    id="fluturimi"
+                    value={fluturimiId}
+                    onChange={(event) => setFluturimiId(event.target.value)}
+                  >
+                    <option value="" style={{ color: 'black' }}>Select a flight</option>
+                    {fluturimet.map((fluturimi) => (
+                      <option key={fluturimi.id} value={fluturimi.id} style={{ color: 'black' }}>
+                        {fluturimi.id}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                
+
+                <div>
+                  <button className="btn btn-success m-4 button" onClick={save}>
+                    Save
+                  </button>
+                  <button className="btn btn-warning m-4 button" onClick={update}>
+                    Update
+                  </button>
+                </div>
+              </form>
+            </div>
+            <br></br>
+
+            {/* Alert Message */}
+            {isAlertVisible && (
+              <div
+                className={`alert ${
+                  alertMessage.includes("Error") ? "alert-danger" : "alert-success"
+                }`}
+              >
+                {alertMessage}
+              </div>
+            )}
+            <div className="table-responsive m-3">
+              <table className="table border-gray">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Emri i Pasagjerit</th>
+                    <th scope="col">Mbiemri i Pasagjerit</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Klasi</th>
+                    <th scope="col">Cmimi </th>
+                    <th ></th>
+                    <th scope="col">Currency</th>
+                    <th ></th>
+                    <th scope="col">Lloji</th>
+                    <th ></th>
+                    <th scope="col">Data e Rezervimit</th>
+                    <th scope="col">Data e Kthimit</th>
+                    <th scope="col">FluturimiID</th>
+                   
+                    <th scope="col">Opsionet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rezervimet.map((rezervimi) => (
+                    <tr key={rezervimi.id}>
+                      <td>{rezervimi.id}</td>
+                      <td>{rezervimi.emriPasagjerit}</td>
+                      <td>{rezervimi.mbiemriPasagjerit}</td>
+                      <td>{rezervimi.email}</td>
+                      <td>{rezervimi.klasi}</td>
+                      <td>{rezervimi.cmimi}</td>
+                      <td></td>
+                      <td>{rezervimi.currency}</td>
+                      <td></td>
+                      <td>{rezervimi.kthyese ? 'Kthyese' : 'NjeDrejtim'}</td>
+                      <td></td>
+                      <td>{rezervimi.data_e_Rezervimit}</td>
+                      <td>{rezervimi.kthyese ? rezervimi.data_e_Kthimit : '-'}</td>
+                      <td>{rezervimi.fluturimiId}</td>
+                     
+
+                      <td>
+                        <div className="button-container">
+                          <button
+                            type="button"
+                            className="btn btn-warning mx-1 button"
+                            onClick={() => editRezervimi(rezervimi)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-danger mx-1 button"
+                            onClick={() => deleteRezervimi(rezervimi.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 
   
