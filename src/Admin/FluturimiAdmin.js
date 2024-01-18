@@ -163,7 +163,230 @@ function Fluturimet(){
   }
 
   return (
-   
+    <div
+    className="container-fluid"
+    style={{
+      backgroundColor: "#004687",
+      minHeight: "100vh",
+      backgroundSize: "cover",
+    }}
+  >
+    <div className="row">
+      {toggle && (
+        <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
+          <Sidebar />
+        </div>
+      )}
+
+      <div className="col-4 col-md-2"></div>
+      <div className="col">
+        <Nav Toggle={Toggle} />
+
+       <div>
+          <h4 className="description">Të dhënat për Fluturime</h4>
+      <div className="container mt-4">
+        <form>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="id"
+              hidden
+              value={id}
+              onChange={(event) => {
+                setId(event.target.value);
+              }}
+            />
+  
+            <label className="label">Numri i Fluturimit</label>
+            <input
+              type="text"
+              className="form-control"
+              id="nrFluturimit"
+              value={nrFluturimit}
+              onChange={(event) => {
+                setNrFluturimit(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Departure Airport</label>
+            <input
+              type="text"
+              className="form-control"
+              id="deparuteAirport"
+              value={deparuteAirport}
+              onChange={(event) => {
+                setDeparuteAirport(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Arrival Airport</label>
+            <input
+              type="text"
+              className="form-control"
+              id="arrivalAirport"
+              value={arrivalAirport}
+              onChange={(event) => {
+                setArrivalAirport(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Koha e Nisjes</label>
+            <input
+              type="datetime-local"
+              className="form-control"
+              id="kohaENisjes"
+              value={kohaENisjes}
+              onChange={(event) => {
+                setKohaENisjes(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Koha e Arritjes</label>
+            <input
+              type="datetime-local"
+              className="form-control"
+              id="kohaEArritjes"
+              value={kohaEArritjes}
+              onChange={(event) => {
+                setKohaEArritjes(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Cmimi</label>
+            <input
+              type="text"
+              className="form-control"
+              id="cmimi"
+              value={cmimi}
+              onChange={(event) => {
+                setCmimi(event.target.value);
+              }}
+            />
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Qyteti</label>
+            <select
+              className="form-control"
+              id="qyteti"
+              value={qytetiId}
+              onChange={(event) => setQytetiId(event.target.value)}
+            >
+              <option value="">Select a city</option>
+              {qytetet.map((qyteti) => (
+                <option key={qyteti.id} value={qyteti.id}>
+                  {qyteti.emri}
+                </option>
+              ))}
+            </select>
+          </div>
+  
+          <div className="form-group">
+            <label className="label">Aeroplani</label>
+            <select
+              className="form-control"
+              id="shteti"
+              value={aeroplaniId}
+              onChange={(event) => setAeroplaniId(event.target.value)}
+            >
+              <option value="">Select an Airplane</option>
+              {aeroplanet.map((aeroplani) => (
+                <option key={aeroplani.id} value={aeroplani.id} style={{ color: 'black' }}>
+                  {aeroplani.kompania}
+                </option>
+              ))}
+            </select>
+          </div>
+  
+          <div>
+            <button className="btn btn-success m-4 button" onClick={save}>
+              Save
+            </button>
+            <button className="btn btn-warning m-4 button" onClick={update}>
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+      <br></br>
+  
+      {/* Alert Message */}
+      {isAlertVisible && (
+        <div
+          className={`alert ${
+            alertMessage.includes("Error") ? "alert-danger" : "alert-success"
+          }`}
+        >
+          {alertMessage}
+        </div>
+      )}
+      <div className="table-responsive m-3">
+        <table className="table border-gray">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Numri i Fluturimit</th>
+              <th scope="col">Departure Airport</th>
+              <th scope="col">Arrival Airport</th>
+              <th scope="col">Koha e Nisjes</th>
+              <th scope="col">Koha e Arritjes</th>
+              <th scope="col">Cmimi</th>
+              <th scope="col">QytetiID</th>
+              <th scope="col">AeroplaniID</th>
+              <th scope="col">Opsionet</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fluturimet.map((fluturimi) => (
+              <tr key={fluturimi.id}>
+                <td>{fluturimi.id}</td>
+                <td>{fluturimi.nrFluturimit}</td>
+                <td>{fluturimi.deparuteAirport}</td>
+                <td>{fluturimi.arrivalAirport}</td>
+                <td>{fluturimi.kohaENisjes}</td>
+                <td>{fluturimi.kohaEArritjes}</td>
+                <td>{fluturimi.cmimi}</td>
+                <td>{fluturimi.qytetiId}</td>
+                <td>{fluturimi.aeroplaniId}</td>
+  
+                <td>
+                  <div className="button-container">
+                    <button
+                      type="button"
+                      className="btn btn-warning mx-1 button"
+                      onClick={() => editFluturimi(fluturimi)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger mx-1 button"
+                      onClick={() => deleteFluturimi(fluturimi.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
   );
 }
 
