@@ -155,7 +155,6 @@ function Rezervime() {
       padding: 0,
       fontFamily: 'Arial, sans-serif',
       color: 'white',
-      backgroundColor:'#e4f1fe',
       display: 'flex',
       alignItems: 'stretch',
   }}>

@@ -37,7 +37,7 @@ function LoginForm() {
       setMessage("Login successful");
 
       if (role === "admin") {
-        navigate("/admin");
+        navigate("/");
       } else if (role === "client") {
         navigate("/");
       }

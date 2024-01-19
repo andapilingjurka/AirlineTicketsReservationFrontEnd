@@ -97,27 +97,6 @@ function Sidebar() {
           <i className="bi bi-chat-dots fs-5 me-3"></i> <span>Mesazhet</span>
         </Link>
 
-        <br />
-        <br />
-        <br />
-
-        <Link
-          to="#"
-          className={`list-group-item py-2 ${
-            location.pathname === "#" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-gear fs-5 me-3"></i> <span>Settings</span>
-        </Link>
-
-        <Link
-          to="/logout"
-          className={`list-group-item py-2 ${
-            location.pathname === "/logout" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-power fs-5 me-3"></i> <span>Logout</span>
-        </Link>
       </div>
     </div>
   );
