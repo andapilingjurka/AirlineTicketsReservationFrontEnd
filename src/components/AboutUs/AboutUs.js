@@ -38,37 +38,52 @@ const AboutUs = () => {
       </div>
 
       <div className="card-container">
-        <div className="card text-right">
-          <h2>Kualiteti:</h2>
-          <p>
-            Ne punojmë vazhdimisht për të përmirësuar cilësinë e shërbimeve tona
-            dhe për të siguruar një udhëtim të paharrueshëm për klientët tanë.
-          </p>
-        </div>
+        <div className="container mt-5 mb-5">
+          <div className="row">
+            <div className="col-md-3">
+              <div className="card">
+                <h2>Kualiteti:</h2>
+                <p>
+                  Ne punojmë vazhdimisht për të përmirësuar cilësinë e
+                  shërbimeve tona dhe për të siguruar një udhëtim të
+                  paharrueshëm për klientët tanë.
+                </p>
+              </div>
+            </div>
 
-        <div className="card text-right">
-          <h2>Siguria:</h2>
-          <p>
-            Sigurimi i udhëtimit tuaj është prioriteti ynë. Ne bashkëpunojmë me
-            kompanitë më të besueshme për të garantuar një udhëtim të sigurtë.
-          </p>
-        </div>
+            <div className="col-md-3">
+              <div className="card">
+                <h2>Siguria:</h2>
+                <p>
+                  Sigurimi i udhëtimit tuaj është prioriteti ynë. Ne
+                  bashkëpunojmë me kompanitë më të besueshme për të garantuar
+                  një udhëtim të sigurtë.
+                </p>
+              </div>
+            </div>
 
-        <div className="card text-right">
-          <h2>Efikasiteti:</h2>
-          <p>
-            Me një platformë të avancuar dhe një ekip të specializuar, ne
-            sigurojmë rezervime të shpejta dhe procese të lehta për klientët
-            tanë.
-          </p>
-        </div>
+            <div className="col-md-3">
+              <div className="card">
+                <h2>Efikasiteti:</h2>
+                <p>
+                  Me një platformë të avancuar dhe një ekip të specializuar, ne
+                  sigurojmë rezervime të shpejta dhe procese të lehta për
+                  klientët tanë.
+                </p>
+              </div>
+            </div>
 
-        <div className="card text-right">
-          <h2>Shërbimi i Klientit:</h2>
-          <p>
-            Ekipi ynë është gjithmonë në dispozicion për të përgjigjur pyetjet
-            tuaja dhe për të ofruar ndihmë në gjithë procesin e udhëtimit tuaj.
-          </p>
+            <div className="col-md-3">
+              <div className="card">
+                <h2>Shërbimi i Klientit:</h2>
+                <p>
+                  Ekipi ynë është gjithmonë në dispozicion për të përgjigjur
+                  pyetjet tuaja dhe për të ofruar ndihmë në gjithë procesin e
+                  udhëtimit tuaj.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="additional-content">
