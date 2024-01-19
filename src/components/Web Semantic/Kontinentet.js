@@ -46,7 +46,7 @@ const KontinentetSemantic = () => {
     <div>
       <MyNavbar />
       <div className="container-kontinentetsemantic">
-        <h1 className="kontinentetsemantic-h1">Continents from Wikidata</h1>
+        <h1 className="kontinentetsemantic-h1">Kontinentet në Botë</h1>
         <ul className="kontinentetsemantic-ul">
           {continentData.map((continent, index) => (
             <li className="kontinentetsemantic-li" key={index}>

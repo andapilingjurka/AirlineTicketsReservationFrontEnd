@@ -342,8 +342,9 @@ function Rezervime() {
           </div>
         )}
       </div>
-      </div>
       <Footer/>
+      </div>
+     
     );
   };
   export default Rezervime;  
