@@ -2,7 +2,6 @@ import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
 import React, { useState, useEffect } from "react";
 import chart from "../images/chart.png";
-import calendar from "../images/calendar.png";
 import { useRating } from "../components/AboutUs/RatingContext";
 
 function Dashboard() {
