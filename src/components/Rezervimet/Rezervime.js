@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./cssRezervimet.css";
 import { useLocation } from "react-router-dom";
+import PaymentForm from './PaymentForm';
 
 function Rezervime() {
   const [id, setId] = useState("");
@@ -19,7 +20,9 @@ function Rezervime() {
   const [rezervimet, setRezervimet] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState("");
-
+  const [pagesa, setPagesa] = useState('');
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const location = useLocation();
   const [flightId, setFlightId] = useState(null);
@@ -96,7 +99,8 @@ function Rezervime() {
       showAndHideAlert("Rezervimi është regjistruar me sukses!");
       clearForm();
       loadReservations();
-   
+      setShowPaymentForm(true);
+
     } catch (err) {
       showAndHideAlert(`Error: ${err}`, true);
     }
@@ -131,25 +135,36 @@ function Rezervime() {
     }, 3000); // Hide the alert after 3 seconds
   }
 
-
+  const handlePaymentSuccess = async () => {
+    alert('Payment successful!');
+    setId("");
+    setEmriPasagjerit("");
+    setMbiemriPasagjerit("");
+    setEmail("");
+    setCmimi("");
+    setKlasi("");
+    setCurrency("");
+    setKthyese(false);
+    setFluturimiId("");
+    setDataERezervimit("");
+    setDataEKthimit("");
+    Load();
+  };
   return (
-    <div className="rezervime-body ">
-       
-    <div className="rezervime-container mt-4">
-   
-  <form onSubmit={save}>
-    <div className="rezervime-form-group">
-      <input
-        type="text"
-        className="rezervime-form-control"
-        id="id"
-        hidden
-        value={id}
-        onChange={(event) => {
-          setId(event.target.value);
-        }}
-      />
-    </div>
+    <div className="rezervime-body">
+      {!showPaymentForm && !paymentSuccess && (
+        <div className="rezervime-container mt-4">
+          <form onSubmit={save}>
+            <div className="rezervime-form-group">
+              <input
+                type="text"
+                className="rezervime-form-control"
+                id="id"
+                hidden
+                value={id}
+                onChange={handleIdChange}
+              />
+            </div>
     <div className="rezervime-form-group">
       <label className="rezervime-label">Emri i Pasagjerit</label>
       <input
@@ -295,8 +310,25 @@ function Rezervime() {
     </div>
   </form>
 </div>
-</div>
-     
+      )}
+
+
+{showPaymentForm && !paymentSuccess && (
+        <PaymentForm
+          amount={shuma}
+          description={emri}
+          currency={pagesa}
+          onSuccess={handlePaymentSuccess}
+        />
+      )}
+
+      {paymentSuccess && (
+        <div>
+          <p>Payment successful! Thank you for your reservation.</p>
+          {/* Additional content or redirection can go here */}
+        </div>
+      )}
+    </div>
   );
-}
+};
 export default Rezervime;
