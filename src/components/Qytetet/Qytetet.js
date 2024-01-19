@@ -4,6 +4,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./qytetet.css";
 import MyNavbar from "../include/Navbar";
+import Footer from "../include/Footer";
 
 const CityComponent = () => {
   const [cities, setCities] = useState([]);
@@ -46,6 +47,7 @@ const CityComponent = () => {
           ))}
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
