@@ -96,13 +96,15 @@ function Dashboard() {
 
                 {/* Right Image */}
                 <div className="col-xxl-6 feedback">
-                  <h2 className="feedback-h2">Feedback</h2>
-                  <p className="feedback-p">
-                    Admin Rating: {adminRating} stars
-                  </p>
-                  <p className="feedback-p">
-                    Rating as Percentage: {adminRating * 20}%
-                  </p>
+                  <div className="footer-border">
+                    <h2 className="feedback-h2">Feedback</h2>
+                    <p className="feedback-p">
+                      Admin Rating: {adminRating} stars
+                    </p>
+                    <p className="feedback-p">
+                      Rating as Percentage: {adminRating * 20}%
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
