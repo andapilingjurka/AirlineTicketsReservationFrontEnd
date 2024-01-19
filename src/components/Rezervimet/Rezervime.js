@@ -3,7 +3,7 @@ import axios from "axios";
 import "./cssRezervimet.css";
 import { useLocation } from "react-router-dom";
 import PaymentForm from './PaymentForm';
-
+import plane from './plane .jpg';
 function Rezervime() {
   const [id, setId] = useState("");
   const [emriPasagjerit, setEmriPasagjerit] = useState("");
@@ -20,7 +20,6 @@ function Rezervime() {
   const [rezervimet, setRezervimet] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState("");
-  const [pagesa, setPagesa] = useState('');
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
@@ -79,32 +78,30 @@ function Rezervime() {
     const selectedCurrency = currency === "EUR" ? "EUR" : "USD";
   
     try {
-      const payload = {
+      await axios.post(`https://localhost:7285/api/Rezervimi/AddRezervimi`,{
         emriPasagjerit,
         mbiemriPasagjerit,
         email,
-        klasi,
-        cmimi,
+        klasi:klasi,
+        cmimi:200,
         currency: selectedCurrency,
         data_e_Kthimit: kthyese ? data_e_Kthimit : null,
         data_e_Rezervimit,
         
         fluturimiId:flightId,
-      };
-  
-      console.log("Payload:", payload); // Check if the payload is correct
-  
-      await axios.post(`https://localhost:7285/api/Rezervimi/AddRezervimi`, payload);
-      
-      showAndHideAlert("Rezervimi është regjistruar me sukses!");
-      clearForm();
-      loadReservations();
+      });
+      alert('Save successful!');
       setShowPaymentForm(true);
-
     } catch (err) {
-      showAndHideAlert(`Error: ${err}`, true);
+      alert(err);
     }
   }
+  
+  
+     
+   
+   
+    
   
 
   function clearForm() {
@@ -134,9 +131,9 @@ function Rezervime() {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
   }
-
   const handlePaymentSuccess = async () => {
     alert('Payment successful!');
+    setPaymentSuccess(true);
     setId("");
     setEmriPasagjerit("");
     setMbiemriPasagjerit("");
@@ -145,189 +142,201 @@ function Rezervime() {
     setKlasi("");
     setCurrency("");
     setKthyese(false);
+
     setFluturimiId("");
     setDataERezervimit("");
     setDataEKthimit("");
+    loadReservations("");
   };
+
   return (
-    <div className="rezervime-body">
-      {!showPaymentForm && !paymentSuccess && (
-        <div className="rezervime-container mt-4">
-          <form onSubmit={save}>
-            <div className="rezervime-form-group">
-              <input
-                type="text"
-                className="rezervime-form-control"
-                id="id"
-                hidden
-                value={id}
-                onChange={handlePaymentSuccess}
-              />
-            </div>
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Emri i Pasagjerit</label>
-      <input
-        type="text"
-        className="rezervime-form-control"
-        id="emriPasagjerit"
-        value={emriPasagjerit}
-        onChange={(event) => {
-          setEmriPasagjerit(event.target.value);
-        }}
-      />
-    </div>
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Mbiemri i Pasagjerit</label>
-      <input
-        type="text"
-        className="rezervime-form-control"
-        id="mbiemriPasagjerit"
-        value={mbiemriPasagjerit}
-        onChange={(event) => {
-          setMbiemriPasagjerit(event.target.value);
-        }}
-      />
-    </div>
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Email</label>
-      <input
-        type="text"
-        className="rezervime-form-control"
-        id="email"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-    </div>
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Klasi</label>
-      <select
-        className="rezervime-form-control"
-        id="klasi"
-        value={klasi}
-        onChange={(event) => {
-          setKlasi(event.target.value);
-        }}
-      >
-        <option value="">Select class</option>
-        <option value="Economic">Economic</option>
-        <option value="Business">Business</option>
-        <option value="VIP">VIP</option>
-      </select>
-    </div>
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Cmimi</label>
-      <input
-        readOnly
-        type="text"
-        className="rezervime-form-control"
-        id="cmimi"
-        value={cmimi}
-        onChange={(event) => {
-          setCmimi(event.target.value);
-        }}
-      />
-    </div>
-
-    <div className="rezervime-form-group">
-      <label className="rezervime-label mr-4" style={{ marginRight: '10px' }}>Currency</label>
-      <div className="rezervime-form-check rezervime-form-check-inline ml-2">
-        <input
-          type="checkbox"
-          className="rezervime-form-check-input"
-          id="eurCheckbox"
-          checked={currency === "EUR"}
-          onChange={() => setCurrency("EUR")}
-        />
-        <label className="rezervime-form-check-label white-text" htmlFor="eurCheckbox" style={{ color: 'white' }}>
-          EUR
-        </label>
-      </div>
-      <div className="rezervime-form-check rezervime-form-check-inline">
-        <input
-          type="checkbox"
-          className="rezervime-form-check-input"
-          id="usdCheckbox"
-          checked={currency === "USD"}
-          onChange={() => setCurrency("USD")}
-        />
-        <label className="rezervime-form-check-label white-text" htmlFor="usdCheckbox" style={{ color: 'white' }}>
-          USD
-        </label>
-      </div>
-    </div>
-
-    <div className="rezervime-form-group">
-      <label className="rezervime-label" style={{ marginRight: '10px' }}>Kthyese</label>
-      <input
-        type="checkbox"
-        className="rezervime-form-check-input"
-        id="kthyese"
-        checked={kthyese}
-        onChange={(event) => {
-          setKthyese(event.target.checked);
-        }}
-      />
-    </div>
-
-    {/* Conditionally render "Data e Kthimit" input */}
-    {kthyese && (
+    <div className="rezervime" style={{
+      margin: 0,
+      padding: 0,
+      fontFamily: 'Arial, sans-serif',
+      color: 'white',
+      backgroundColor:'#e4f1fe',
+      display: 'flex',
+      alignItems: 'stretch',
+  }}>
+    {/* Your content goes here */}
+        {!showPaymentForm && !paymentSuccess && (
+          <div className="rezervime-container mt-4">
+            <form onSubmit={save}>
+              <div className="rezervime-form-group">
+                <input
+                  type="text"
+                  className="rezervime-form-control"
+                  id="id"
+                  hidden
+                  value={id}
+                  onChange={handlePaymentSuccess}
+                />
+              </div>
       <div className="rezervime-form-group">
-        <label className="rezervime-label">Data e Kthimit</label>
+        <label className="rezervime-label">Emri i Pasagjerit</label>
         <input
-          type="date"
+          type="text"
           className="rezervime-form-control"
-          id="data_e_Kthimit"
-          value={data_e_Kthimit}
+          id="emriPasagjerit"
+          value={emriPasagjerit}
           onChange={(event) => {
-            setDataEKthimit(event.target.value);
+            setEmriPasagjerit(event.target.value);
           }}
         />
       </div>
-    )}
-    <div className="rezervime-form-group">
-      <label className="rezervime-label">Data e Rezervimit</label>
-      <input
-        type="date"
-        className="rezervime-form-control"
-        id="data_e_Rezervimit"
-        value={data_e_Rezervimit}
-        onChange={(event) => {
-          setDataERezervimit(event.target.value);
-        }}
-      />
-    </div>
-    <div className="rezervime-form-group">
-  <label className="rezervime-label">Fluturimi: {flightId}</label>  
-    
-</div>
-    <div>
-      <button type="submit"className="btn btn-success m-4 rezervime-button">
-        Submit
-      </button>
-    </div>
-  </form>
-</div>
-      )}
-
-
-{showPaymentForm && !paymentSuccess && (
-        <PaymentForm
-          amount={cmimi}
-          description={klasi}
-          currency={currency}
-          onSuccess={handlePaymentSuccess}
+      <div className="rezervime-form-group">
+        <label className="rezervime-label">Mbiemri i Pasagjerit</label>
+        <input
+          type="text"
+          className="rezervime-form-control"
+          id="mbiemriPasagjerit"
+          value={mbiemriPasagjerit}
+          onChange={(event) => {
+            setMbiemriPasagjerit(event.target.value);
+          }}
         />
-      )}
-
-      {paymentSuccess && (
-        <div>
-          <p>Payment successful! Thank you for your reservation.</p>
-          {/* Additional content or redirection can go here */}
+      </div>
+      <div className="rezervime-form-group">
+        <label className="rezervime-label">Email</label>
+        <input
+          type="text"
+          className="rezervime-form-control"
+          id="email"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+      </div>
+      <div className="rezervime-form-group">
+        <label className="rezervime-label">Klasi</label>
+        <select
+          className="rezervime-form-control"
+          id="klasi"
+          value={klasi}
+          onChange={(event) => {
+            setKlasi(event.target.value);
+          }}
+        >
+          <option value="">Select class</option>
+          <option value="Economic">Economic</option>
+          <option value="Business">Business</option>
+          <option value="VIP">VIP</option>
+        </select>
+      </div>
+      <div className="rezervime-form-group">
+        <label className="rezervime-label">Cmimi</label>
+        <input
+          readOnly
+          type="text"
+          className="rezervime-form-control"
+          id="cmimi"
+          value={cmimi}
+          onChange={(event) => {
+            setCmimi(event.target.value);
+          }}
+        />
+      </div>
+  
+      <div className="rezervime-form-group">
+        <label className="rezervime-label mr-4" style={{ marginRight: '10px' }}>Currency</label>
+        <div className="rezervime-form-check rezervime-form-check-inline ml-2">
+          <input
+            type="checkbox"
+            className="rezervime-form-check-input"
+            id="eurCheckbox"
+            checked={currency === "EUR"}
+            onChange={() => setCurrency("EUR")}
+          />
+          <label className="rezervime-form-check-label white-text" htmlFor="eurCheckbox" style={{ color: 'white' }}>
+            EUR
+          </label>
+        </div>
+        <div className="rezervime-form-check rezervime-form-check-inline">
+          <input
+            type="checkbox"
+            className="rezervime-form-check-input"
+            id="usdCheckbox"
+            checked={currency === "USD"}
+            onChange={() => setCurrency("USD")}
+          />
+          <label className="rezervime-form-check-label white-text" htmlFor="usdCheckbox" style={{ color: 'white' }}>
+            USD
+          </label>
+        </div>
+      </div>
+  
+      <div className="rezervime-form-group">
+        <label className="rezervime-label" style={{ marginRight: '10px' }}>Kthyese</label>
+        <input
+          type="checkbox"
+          className="rezervime-form-check-input"
+          id="kthyese"
+          checked={kthyese}
+          onChange={(event) => {
+            setKthyese(event.target.checked);
+          }}
+        />
+      </div>
+  
+      {/* Conditionally render "Data e Kthimit" input */}
+      {kthyese && (
+        <div className="rezervime-form-group">
+          <label className="rezervime-label">Data e Kthimit</label>
+          <input
+            type="date"
+            className="rezervime-form-control"
+            id="data_e_Kthimit"
+            value={data_e_Kthimit}
+            onChange={(event) => {
+              setDataEKthimit(event.target.value);
+            }}
+          />
         </div>
       )}
-    </div>
-  );
-};
-export default Rezervime;
+      <div className="rezervime-form-group">
+        <label className="rezervime-label">Data e Rezervimit</label>
+        <input
+          type="date"
+          className="rezervime-form-control"
+          id="data_e_Rezervimit"
+          value={data_e_Rezervimit}
+          onChange={(event) => {
+            setDataERezervimit(event.target.value);
+          }}
+        />
+      </div>
+      <div className="rezervime-form-group">
+    <label className="rezervime-label">Fluturimi: {flightId}</label>  
+      
+  </div>
+      <div>
+        <button type="submit"className="btn btn-success m-4 rezervime-button">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+        )}
+  
+  
+  {showPaymentForm && !paymentSuccess && (
+          <PaymentForm
+            amount={cmimi}
+            description={klasi}
+            currency={currency}
+            onSuccess={handlePaymentSuccess}
+          />
+        )}
+  
+  {paymentSuccess && (
+          <div>
+            <p>Payment successful! Thank you for your reservation.</p>
+            {/* Additional content or redirection can go here */}
+          </div>
+        )}
+      </div>
+    );
+  };
+  export default Rezervime;  
