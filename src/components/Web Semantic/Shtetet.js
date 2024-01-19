@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import "./shtetet.css";
+import "./shtetet.css";
+import MyNavbar from "../include/Navbar";
 
-const Shtetet = () => {
+const ShtetetSemantic = () => {
   const [countryData, setCountryData] = useState([]);
 
   useEffect(() => {
@@ -42,15 +43,20 @@ const Shtetet = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Countries</h1>
-      <ul>
-        {countryData.map((country, index) => (
-          <li key={index}>{country.countryLabel.value}</li>
-        ))}
-      </ul>
+    <div>
+      <MyNavbar />
+      <div className="container-shtetetsemantic">
+        <h1 className="shtetetsemantic-h1">Shtetet në Botë</h1>
+        <ul className="shtetetsemantic-ul">
+          {countryData.map((country, index) => (
+            <li className="shtetetsemantic-li" key={index}>
+              {country.countryLabel.value}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
 
-export default Shtetet;
+export default ShtetetSemantic;

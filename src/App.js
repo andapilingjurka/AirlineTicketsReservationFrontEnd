@@ -10,11 +10,12 @@ import Registration from "./components/LoginRegister/Registration";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Kontakti from "./components/Kontakti/Kontakti";
-import { RatingProvider } from "./components/AboutUs/RatingContext"; // Adjust the path
+import { RatingProvider } from "./components/AboutUs/RatingContext";
 import Kontaktet from "./Admin/Kontaktet";
 import Perdoruesit from "./Admin/Perdoruesit";
 import Aeroportet from "./components/Web Semantic/Aeroportet";
 import CityList from "./components/Qytetet/Qytetet";
+import ShtetetSemantic from "./components/Web Semantic/Shtetet";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/perdoruesit" element={<Perdoruesit />} />
           <Route path="/aeroportet" element={<Aeroportet />} />
           <Route path="/citylist" element={<CityList />} />
+          <Route path="/shtetetsemantic" element={<ShtetetSemantic />} />
         </Routes>
       </RatingProvider>
     </Router>

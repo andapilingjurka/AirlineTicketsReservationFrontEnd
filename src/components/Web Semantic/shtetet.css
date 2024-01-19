@@ -1,0 +1,23 @@
+ .container-shtetetsemantic {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .shtetetsemantic-h1 {
+    color: #333;
+    text-align: center;
+  }
+  
+  .shtetetsemantic-ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .shtetetsemantic-li {
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }

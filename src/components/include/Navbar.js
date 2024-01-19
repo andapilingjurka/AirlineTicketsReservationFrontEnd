@@ -31,7 +31,7 @@ const MyNavbar = () => {
             <NavDropdown.Item className="dropdown-link" href="/aeroportet">
               Aeroportet
             </NavDropdown.Item>
-            <NavDropdown.Item className="dropdown-link" href="#">
+            <NavDropdown.Item className="dropdown-link" href="/shtetetsemantic">
               Shtetet
             </NavDropdown.Item>
             <NavDropdown.Item className="dropdown-link" href="#">
