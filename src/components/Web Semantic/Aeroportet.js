@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './airport.css';
+import React, { useEffect, useState } from "react";
+import "./airport.css";
+
+import MyNavbar from "../include/Navbar";
 
 const Aeroportet = () => {
   const [airports, setAirports] = useState([]);
@@ -18,26 +20,27 @@ const Aeroportet = () => {
       }
     `;
 
-    const endpoint = 'https://query.wikidata.org/sparql?query=' +
-                     encodeURIComponent(query) +
-                     '&format=json';
+    const endpoint =
+      "https://query.wikidata.org/sparql?query=" +
+      encodeURIComponent(query) +
+      "&format=json";
 
     const fetchData = async () => {
       try {
         const response = await fetch(endpoint, {
           headers: {
-            'Accept': 'application/json'
-          }
+            Accept: "application/json",
+          },
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
 
         const data = await response.json();
         displayAirports(data.results.bindings);
       } catch (error) {
-        console.error('Error fetching RDF data:', error);
+        console.error("Error fetching RDF data:", error);
       }
     };
 
@@ -61,15 +64,20 @@ const Aeroportet = () => {
   };
 
   return (
-    <div className="aeroporti">
-      <h1 className='aeroportet-h1'>Aeroportet në Botë</h1>
-      <ul className='aeroportet-ul'>
-        {airports.map((airport, index) => (
-          <li className='aeroportet-li' key={index}>
-            <a className='aeroportet.a' href={airport.airportLink}>Airport: {airport.airportName}</a>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <MyNavbar />
+      <div className="aeroporti">
+        <h1 className="aeroportet-h1">Aeroportet në Botë</h1>
+        <ul className="aeroportet-ul">
+          {airports.map((airport, index) => (
+            <li className="aeroportet-li" key={index}>
+              <a className="aeroportet.a" href={airport.airportLink}>
+                Airport: {airport.airportName}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
