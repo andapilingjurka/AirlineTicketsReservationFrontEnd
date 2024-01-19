@@ -3,14 +3,16 @@ import Sidebar from "./include/Sidebar";
 import React, { useState, useEffect } from "react";
 import chart from "../images/chart.png";
 import { useRating } from "../components/AboutUs/RatingContext";
+import { Link, useNavigate } from 'react-router-dom';
+import { decodeToken } from '../components/LoginRegister/jwtUtils';
 
 function Dashboard() {
   const [toggle, setToggle] = useState(true);
   const { userRating, setUserRating, adminRating } = useRating();
+  const token = localStorage.getItem('token');
+  const decodedToken = decodeToken(token);
+  const navigate = useNavigate();
 
-  const Toggle = () => {
-    setToggle(!toggle);
-  };
   useEffect(() => {
     // Fetch user rating from the server or any other storage method
     // For now, we'll just set it to 0 if it's undefined
@@ -18,6 +20,23 @@ function Dashboard() {
       setUserRating(0);
     }
   }, [userRating, setUserRating]);
+
+
+      // Kushti per kontrollimin nese eshte admin
+  if (!decodedToken || decodedToken.role !== 'admin') {
+    return (
+      <div className="container">
+   <h1 style={{ textAlign: 'center', fontFamily: 'Times New Roman, serif', fontWeight: 'bold',position: 'relative', marginTop:'250px'}}>
+      Ju nuk keni akses në këtë faqe!
+    </h1>     
+     </div>
+    );
+  }
+
+  const Toggle = () => {
+    setToggle(!toggle);
+  };
+  
   return (
     <div
       className="container-fluid"

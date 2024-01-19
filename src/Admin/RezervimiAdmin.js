@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
+import { Link, useNavigate } from 'react-router-dom';
+import { decodeToken } from '../components/LoginRegister/jwtUtils';
 
 function Rezervimet() {
   const [toggle, setToggle] = useState(true);
-
+  const token = localStorage.getItem('token');
+  const decodedToken = decodeToken(token);
+  const navigate = useNavigate();
   const Toggle = () => {
     setToggle(!toggle);
   };
@@ -161,7 +164,16 @@ function Rezervimet() {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
   }
-
+  // Kushti per kontrollimin nese eshte admin
+  if (!decodedToken || decodedToken.role !== 'admin') {
+    return (
+      <div className="container">
+ <h1 style={{ textAlign: 'center', fontFamily: 'Times New Roman, serif', fontWeight: 'bold',position: 'relative', marginTop:'250px'}}>
+      Ju nuk keni akses në këtë faqe!
+    </h1>  
+    </div>
+    );
+  }
   return (
     <div className="container-fluid" style={{ backgroundColor: "#004687", minHeight: "100vh", backgroundSize: "cover" }}>
       <div className="row">

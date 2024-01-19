@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
+import { Link, useNavigate } from 'react-router-dom';
+import { decodeToken } from '../components/LoginRegister/jwtUtils';
+
+
 function Perdoruesit() {
   const [toggle, setToggle] = useState(true);
   const [perdoruesit, setPerdoruesit] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
-
+  const token = localStorage.getItem('token');
+  const decodedToken = decodeToken(token);
+  const navigate = useNavigate();
   const Toggle = () => {
     setToggle(!toggle);
   };
@@ -17,6 +23,17 @@ function Perdoruesit() {
   useEffect(() => {
     Load();
   }, []);
+
+   // Kushti per kontrollimin nese eshte admin
+   if (!decodedToken || decodedToken.role !== 'admin') {
+    return (
+      <div className="container">
+ <h1 style={{ textAlign: 'center', fontFamily: 'Times New Roman, serif', fontWeight: 'bold',position: 'relative', marginTop:'250px'}}>
+      Ju nuk keni akses në këtë faqe!
+    </h1>  
+          </div>
+    );
+  }
 
   async function Load() {
     try {
