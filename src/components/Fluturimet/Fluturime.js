@@ -31,7 +31,41 @@ const FlightComponent = () => {
   }
 
   return (
-  
+    <div>
+      <header className="bg-dark text-white text-center py-4">
+        <h1>Fluturimet</h1>
+      </header>
+      <Container className="mt-4" >
+      <h1>Avaliable Flights</h1>
+        <Row sm={4} >
+          {flights.map(flight => (
+            <Col key={flight.nrFluturimit} className="mb-4">
+              <Card>
+                <Card.Body>
+                  <Card.Title>
+                    <FontAwesomeIcon icon={faPlane} className="mr-2" />
+                    {flight.nrFluturimit}
+                  </Card.Title>
+                  <Card.Text>
+                    <strong>Departure Airport:</strong> {flight.deparuteAirport}<br />
+                    <strong>Arrival Airport:</strong> {flight.arrivalAirport}<br />
+                    <strong>Departure Time:</strong> {flight.kohaENisjes}<br />
+                    <strong>Arrival Time:</strong> {flight.kohaEArritjes}<br />
+                    <strong>Price:</strong> {flight.cmimi}<br />
+                    <strong>City:</strong> {flight.qytetiId}<br />
+                    <strong>Airplane:</strong> {flight.aeroplaniId}
+                  </Card.Text>
+                  <Button onClick={() => handleReserveClick(flight.id)}>
+                    <FontAwesomeIcon icon={faTicket} className="mr-2" />
+                     Rezervo
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </div>
   );
 };
 
