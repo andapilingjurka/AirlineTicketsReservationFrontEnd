@@ -6,6 +6,7 @@ import "./Kontakti.css";
 import sjuardese from "./sjuardese.jpg";
 
 import MyNavbar from "../include/Navbar";
+import Footer from "../include/Footer";
 
 function Kontakti() {
   const [id, setKontaktID] = useState("");
@@ -155,6 +156,7 @@ function Kontakti() {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </div>
   );
 }

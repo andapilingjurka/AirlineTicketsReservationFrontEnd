@@ -6,7 +6,7 @@ import PaymentForm from './PaymentForm';
 import plane from './plane .jpg';
 import MyNavbar from "../include/Navbar";
 
-import Footer from  "../include/Navbar";
+import Footer from  "../include/Footer";
 
 function Rezervime() {
   const [id, setId] = useState("");
