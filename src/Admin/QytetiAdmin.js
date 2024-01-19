@@ -230,7 +230,7 @@ function Qytetet() {
                       setSelectedImage(
                         URL.createObjectURL(event.target.files[0])
                       );
-                      setImage("/images/" + event.target.files[0].name);
+                      setImage("./images/" + event.target.files[0].name);
                     }}
                   />
                   {selectedImage && (

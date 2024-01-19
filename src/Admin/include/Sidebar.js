@@ -25,9 +25,9 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/home"
+          to="/"
           className={`list-group-item py-2 ${
-            location.pathname === "/home" ? "active-link" : ""
+            location.pathname === "/" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>

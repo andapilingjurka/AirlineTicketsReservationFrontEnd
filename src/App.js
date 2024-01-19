@@ -10,35 +10,31 @@ import Registration from "./components/LoginRegister/Registration";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Kontakti from "./components/Kontakti/Kontakti";
-import { RatingProvider } from './components/AboutUs/RatingContext';  // Adjust the path
+import { RatingProvider } from "./components/AboutUs/RatingContext"; // Adjust the path
 import Kontaktet from "./Admin/Kontaktet";
 import Perdoruesit from "./Admin/Perdoruesit";
 import Aeroportet from "./components/Web Semantic/Aeroportet";
-
+import CityList from "./components/Qytetet/Qytetet";
 
 function App() {
   return (
     <Router>
-    <RatingProvider>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/contact" element={<Kontakti />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/shtetet" element={<Shtetet />} />
-        <Route path="/qytetet" element={<Qytetet />} />
-        <Route path="/kontaktet" element={<Kontaktet />} />
-        <Route path="/perdoruesit" element={<Perdoruesit/>} />
-        <Route path="/aeroportet" element={<Aeroportet/>} />
-
-
-
-      </Routes>
+      <RatingProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/contact" element={<Kontakti />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/shtetet" element={<Shtetet />} />
+          <Route path="/qytetet" element={<Qytetet />} />
+          <Route path="/kontaktet" element={<Kontaktet />} />
+          <Route path="/perdoruesit" element={<Perdoruesit />} />
+          <Route path="/aeroportet" element={<Aeroportet />} />
+          <Route path="/citylist" element={<CityList />} />
+        </Routes>
       </RatingProvider>
-
     </Router>
   );
 }
