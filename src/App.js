@@ -20,6 +20,7 @@ import Aeroplanet from "./Admin/AeroplaniAdmin";
 import Fluturimet from "./Admin/FluturimiAdmin";
 import Rezervimet from "./Admin/RezervimiAdmin";
 import Rezervime from "./components/Rezervimet/Rezervime";
+import FlightComponent from "./components/Fluturimet/FlightComponent";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
           <Route path="/fluturimet" element={<Fluturimet />} />
           <Route path="/rezervimet" element={<Rezervimet />} />
           <Route path="/rezervime" element={<Rezervime />} />
-          
+          <Route path="/fluturime" element={<FlightComponent />} />
           <Route path="/citylist" element={<CityList />} />
           <Route path="/shtetetsemantic" element={<ShtetetSemantic />} />
         </Routes>
