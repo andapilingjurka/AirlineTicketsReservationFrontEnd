@@ -1,0 +1,63 @@
+/* Rezervime.css */
+
+/* Modify and add the word "Rezervime" to class names */
+
+.rezervime-body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: url('plane.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: stretch; /* Ensure both image and form stretch to the same height */
+}
+
+.rezervime-container {
+  margin: 50px auto;
+  max-width:600px; /* Adjust the width of the form container */
+  height: auto;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1; /* Allow the form container to grow and take available space */
+}
+
+
+
+.rezervime-form {
+  margin-left: 20px;
+  width: 100%; /* Make the form take 100% width of its container */
+}
+
+.rezervime-form-group {
+  margin-bottom: 15px;
+}
+
+.rezervime-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.rezervime-form-control {
+  color: black;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.rezervime-form-check-inline {
+  margin-right: 10px;
+}
+
+.rezervime-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.rezervime-alert {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
