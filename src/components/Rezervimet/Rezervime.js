@@ -148,7 +148,6 @@ function Rezervime() {
     setFluturimiId("");
     setDataERezervimit("");
     setDataEKthimit("");
-    Load();
   };
   return (
     <div className="rezervime-body">
@@ -162,7 +161,7 @@ function Rezervime() {
                 id="id"
                 hidden
                 value={id}
-                onChange={handleIdChange}
+                onChange={handlePaymentSuccess}
               />
             </div>
     <div className="rezervime-form-group">
@@ -315,9 +314,9 @@ function Rezervime() {
 
 {showPaymentForm && !paymentSuccess && (
         <PaymentForm
-          amount={shuma}
-          description={emri}
-          currency={pagesa}
+          amount={cmimi}
+          description={klasi}
+          currency={currency}
           onSuccess={handlePaymentSuccess}
         />
       )}
