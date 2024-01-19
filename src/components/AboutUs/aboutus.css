@@ -2,7 +2,6 @@ body {
     background-color: #FFFF; 
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif; 
   }
 /* Fshehi butonat e kontrollit për video */
 video::-webkit-media-controls-start-playback-button,
@@ -57,6 +56,7 @@ video {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #eaf6f6;
     transition: transform 0.2s ease-in-out;
+    flex: 1;
   }
   
   .card:hover {
@@ -102,7 +102,6 @@ video {
   
   .additional-content h2 {
     margin-bottom: 10px;
-    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 29px;
     text-align: center; 
@@ -134,7 +133,7 @@ video {
   
  
   .enlarged-photo img {
-    width: 60%;
+    width: 90%;
     height: auto;
     border-radius: 80%;
   }
@@ -178,9 +177,6 @@ video {
   }
    h3 {
     margin-top: 80px;
-
-    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-
     text-align: center;
   }
