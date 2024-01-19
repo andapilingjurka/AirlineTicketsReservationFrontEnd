@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faTicket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 
+import MyNavbar from "../include/Navbar";
+import Footer from "../include/Footer";
 
 
 const FlightComponent = () => {
@@ -32,9 +34,8 @@ const FlightComponent = () => {
 
   return (
     <div>
-      <header className="bg-dark text-white text-center py-4">
-        <h1>Fluturimet</h1>
-      </header>
+      <MyNavbar/>
+    
       <Container className="mt-4" >
       <h1>Avaliable Flights</h1>
         <Row sm={4} >
@@ -65,6 +66,7 @@ const FlightComponent = () => {
           ))}
         </Row>
       </Container>
+      <Footer/>
     </div>
   );
 };
