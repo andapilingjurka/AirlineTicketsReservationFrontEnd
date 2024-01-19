@@ -1,0 +1,29 @@
+
+
+.container-kontinentetsemantic {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.kontinentetsemantic-h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.kontinentetsemantic-ul {
+  list-style: none;
+  padding: 0;
+}
+
+.kontinentetsemantic-li {
+  font-size: 18px;
+  color: #271e69;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
