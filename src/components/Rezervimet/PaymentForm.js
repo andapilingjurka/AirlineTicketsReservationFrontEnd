@@ -53,7 +53,7 @@ const PaymentForm = ({ amount, description, currency, onSuccess }) => {
 
   
   return (
-   
+   <div> 
     <form onSubmit={handleFormSubmit} className="payment-container mt-5 ">
     <img src={paypal} className="img-fluid" style={{ width: '75%' }} alt="Featured" />
 
@@ -156,6 +156,7 @@ const PaymentForm = ({ amount, description, currency, onSuccess }) => {
 Submit Payment
 </button>
 </form>
+</div>
 );
 };
 

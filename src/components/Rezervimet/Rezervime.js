@@ -4,6 +4,10 @@ import "./cssRezervimet.css";
 import { useLocation } from "react-router-dom";
 import PaymentForm from './PaymentForm';
 import plane from './plane .jpg';
+import MyNavbar from "../include/Navbar";
+
+
+
 function Rezervime() {
   const [id, setId] = useState("");
   const [emriPasagjerit, setEmriPasagjerit] = useState("");
@@ -34,7 +38,6 @@ function Rezervime() {
       setFlightId(id);
     }
   }, [location.search]);
-
   useEffect(() => {
     // Set fluturimiId based on flightId
     if (flightId) {
@@ -73,7 +76,7 @@ function Rezervime() {
 
   const inputFileRef = useRef(null);
 
-  async function save(event) {
+  async function save(event) { 
     event.preventDefault();
     const selectedCurrency = currency === "EUR" ? "EUR" : "USD";
   
@@ -150,6 +153,9 @@ function Rezervime() {
   };
 
   return (
+    <div>
+
+    <MyNavbar/>
     <div className="rezervime" style={{
       margin: 0,
       padding: 0,
@@ -335,6 +341,7 @@ function Rezervime() {
             {/* Additional content or redirection can go here */}
           </div>
         )}
+      </div>
       </div>
     );
   };
