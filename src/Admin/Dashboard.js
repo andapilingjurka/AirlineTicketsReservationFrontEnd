@@ -3,12 +3,11 @@ import Sidebar from "./include/Sidebar";
 import React, { useState, useEffect } from "react";
 import chart from "../images/chart.png";
 import calendar from "../images/calendar.png";
-import { useRating } from '../components/AboutUs/RatingContext';
+import { useRating } from "../components/AboutUs/RatingContext";
 
 function Dashboard() {
   const [toggle, setToggle] = useState(true);
   const { userRating, setUserRating, adminRating } = useRating();
-
 
   const Toggle = () => {
     setToggle(!toggle);
@@ -96,24 +95,16 @@ function Dashboard() {
                 </div>
 
                 {/* Right Image */}
-                <div className="col-xxl-6">
-                  <img
-                    src={calendar}
-                    alt="Right Product Image"
-                    className="img-fluid mt-3"
-                    style={{
-                      height: "auto",
-                      maxHeight: "372px",
-                      width: "100%",
-                    }}
-                  />
+                <div className="col-xxl-6 feedback">
+                  <h2 className="feedback-h2">Feedback</h2>
+                  <p className="feedback-p">
+                    Admin Rating: {adminRating} stars
+                  </p>
+                  <p className="feedback-p">
+                    Rating as Percentage: {adminRating * 20}%
+                  </p>
                 </div>
               </div>
-              
-        {/* Display the admin's rating */}
-        <p>Admin Rating: {adminRating} stars</p>
-        <p>Rating as Percentage: {adminRating * 20}%</p>
-
             </div>
           </div>
         </div>

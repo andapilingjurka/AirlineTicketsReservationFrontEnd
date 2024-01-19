@@ -117,3 +117,19 @@
   .day:hover {
     background-color: #ddd;
   }
+
+  /*Feedback*/
+  .feedback{
+    margin-top: 70px;
+    text-align: center;
+  }
+
+  .feedback-h2{
+    color:white;
+    padding-bottom: 40px;
+  }
+
+  .feedback-p{
+    color: white;
+    font-size: 17px;
+  }
