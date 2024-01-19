@@ -16,6 +16,7 @@ import Perdoruesit from "./Admin/Perdoruesit";
 import Aeroportet from "./components/Web Semantic/Aeroportet";
 import CityList from "./components/Qytetet/Qytetet";
 import ShtetetSemantic from "./components/Web Semantic/Shtetet";
+import KontinentetSemantic from "./components/Web Semantic/Kontinentet";
 import Aeroplanet from "./Admin/AeroplaniAdmin";
 import Fluturimet from "./Admin/FluturimiAdmin";
 import Rezervimet from "./Admin/RezervimiAdmin";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/fluturime" element={<FlightComponent />} />
           <Route path="/citylist" element={<CityList />} />
           <Route path="/shtetetsemantic" element={<ShtetetSemantic />} />
+          <Route path="/kontinentet" element={<KontinentetSemantic />} />
         </Routes>
       </RatingProvider>
     </Router>
