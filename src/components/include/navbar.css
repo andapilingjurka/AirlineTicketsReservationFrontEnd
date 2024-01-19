@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #271e69;
+    color: #ffffff;
+  }
+  
+  .navbar-brand {
+    color: #ffffff !important;
+    margin-left: 30px;
+    margin-right: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+  }
+  
+  .navbar-nav{
+    margin-left: auto !important;
+    margin-right: 30px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+    margin: 0 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  
+  .dropdown-link{
+    color:black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+  }
+  
