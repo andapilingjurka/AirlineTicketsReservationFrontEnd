@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import "./cssRezervime.css";
+import "./cssRezervimet.css";
 import { useLocation } from "react-router-dom";
 
 function Rezervime() {

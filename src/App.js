@@ -20,7 +20,7 @@ import Aeroplanet from "./Admin/AeroplaniAdmin";
 import Fluturimet from "./Admin/FluturimiAdmin";
 import Rezervimet from "./Admin/RezervimiAdmin";
 import Rezervime from "./components/Rezervimet/Rezervime";
-import FlightComponent from "./components/Fluturimet/FlightComponent";
+import FlightComponent from "./components/Fluturimet/Fluturime";
 
 function App() {
   return (
