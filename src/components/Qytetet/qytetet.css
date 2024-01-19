@@ -1,0 +1,30 @@
+.city-container {
+    display: flex;
+    flex-direction:row;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  
+  .city-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .city-info {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 70px;
+  }
+  
+  @media (max-width: 990px) {
+    .city-info{
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 13px; 
+    }
+  }
