@@ -33,6 +33,8 @@ const AboutUs = () => {
       <div className="video-container">
         <video controls={false} autoPlay muted loop>
           <source src={airline} type="video/mp4" />
+         
+
           Your browser does not support the video tag.
         </video>
       </div>
