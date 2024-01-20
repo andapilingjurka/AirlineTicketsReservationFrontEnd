@@ -57,33 +57,7 @@ function Rezervimet() {
 
   const inputFileRef = useRef(null);
 
-  async function save(event) {
-    event.preventDefault();
-    
-    const selectedCurrency = currency === "EUR" ? "EUR" : "USD";
-  
-    try {
-      const payload = {
-        emriPasagjerit,
-        mbiemriPasagjerit,
-        email,
-        klasi,
-        cmimi,
-        currency: selectedCurrency,
-        data_e_Kthimit: kthyese ? data_e_Kthimit : null,
-        data_e_Rezervimit,
-        
-        fluturimiId,
-      };
-      console.log("Payload:", payload); // Check if the payload is correct
-  
-      showAndHideAlert("Rezervimi është regjistruar me sukses!");
-      clearForm();
-      loadReservations();
-    } catch (err) {
-      showAndHideAlert(`Error: ${err}`, true);
-    }
-  }
+
 
   function clearForm() {
     setId("");
@@ -355,9 +329,7 @@ function Rezervimet() {
                 
 
                 <div>
-                  <button className="btn btn-success m-4 button" onClick={save}>
-                    Save
-                  </button>
+                 
                   <button className="btn btn-warning m-4 button" onClick={update}>
                     Update
                   </button>
