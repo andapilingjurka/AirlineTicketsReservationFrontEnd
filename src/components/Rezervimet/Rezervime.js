@@ -8,9 +8,10 @@ import MyNavbar from "../include/Navbar";
 import Footer from  "../include/Footer";
 import { useNavigate } from 'react-router-dom';
 
+
 function Rezervime() {
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+    const [id, setId] = useState("");
   const [emriPasagjerit, setEmriPasagjerit] = useState("");
   const [mbiemriPasagjerit, setMbiemriPasagjerit] = useState("");
   const [email, setEmail] = useState("");
@@ -153,13 +154,13 @@ function Rezervime() {
     loadReservations("");
   };
   // Check if the user is authenticated by verifying the presence of the authentication token
- const authToken = localStorage.getItem('token');
- if (!authToken) {
-   alert('Ju duhet të jeni të kyçur për të bërë një rezervim!');
-   navigate('/fluturime');
-   return;
- }
-
+  const authToken = localStorage.getItem('token');
+  if (!authToken) {
+    alert('Ju duhet të jeni të kyçur për të bërë një rezervim!');
+    navigate('/fluturime');
+    return;
+  }
+ 
   return (
     <div>
 
