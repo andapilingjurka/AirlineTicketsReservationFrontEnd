@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
-import { Link, useNavigate } from 'react-router-dom';
-import { decodeToken } from '../components/LoginRegister/jwtUtils';
+import { Link, useNavigate } from "react-router-dom";
+import { decodeToken } from "../components/LoginRegister/jwtUtils";
 
 function Rezervimet() {
   const [toggle, setToggle] = useState(true);
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const decodedToken = decodeToken(token);
   const navigate = useNavigate();
   const Toggle = () => {
@@ -39,7 +39,9 @@ function Rezervimet() {
 
   async function loadFlights() {
     try {
-      const result = await axios.get("https://localhost:7285/api/Fluturimi/GetAllList");
+      const result = await axios.get(
+        "https://localhost:7285/api/Fluturimi/GetAllList"
+      );
       setFluturimet(result.data);
     } catch (err) {
       console.error("Error loading flights:", err);
@@ -48,7 +50,9 @@ function Rezervimet() {
 
   async function loadReservations() {
     try {
-      const result = await axios.get("https://localhost:7285/api/Rezervimi/GetAllList");
+      const result = await axios.get(
+        "https://localhost:7285/api/Rezervimi/GetAllList"
+      );
       setRezervimet(result.data);
     } catch (err) {
       console.error("Error loading reservations:", err);
@@ -56,8 +60,6 @@ function Rezervimet() {
   }
 
   const inputFileRef = useRef(null);
-
-
 
   function clearForm() {
     setId("");
@@ -72,7 +74,7 @@ function Rezervimet() {
     setFluturimiId("");
     setDataERezervimit("");
     setDataEKthimit("");
-    
+
     if (inputFileRef.current) {
       inputFileRef.current.value = "";
     }
@@ -88,14 +90,20 @@ function Rezervimet() {
     setCurrency(rezervimi.currency);
     setKthyese(rezervimi.kthyese);
     setFluturimiId(rezervimi.fluturimiId);
-    setDataERezervimit(new Date(rezervimi.data_e_Rezervimit).toISOString().split('T')[0]);
-    setDataEKthimit(new Date(rezervimi.data_e_Kthimit).toISOString().split('T')[0]);
+    setDataERezervimit(
+      new Date(rezervimi.data_e_Rezervimit).toISOString().split("T")[0]
+    );
+    setDataEKthimit(
+      new Date(rezervimi.data_e_Kthimit).toISOString().split("T")[0]
+    );
   }
 
   async function deleteRezervimi(rezervimiId) {
     try {
       console.log("Deleting reservation with ID:", rezervimiId);
-      await axios.delete(`https://localhost:7285/api/Rezervimi/Delete?Id=${rezervimiId}`);
+      await axios.delete(
+        `https://localhost:7285/api/Rezervimi/Delete?Id=${rezervimiId}`
+      );
       showAndHideAlert("Rezervimi është fshir me sukses!");
       clearForm();
       loadReservations();
@@ -108,20 +116,23 @@ function Rezervimet() {
     event.preventDefault();
     try {
       const rezervimi = rezervimet.find((p) => p.id === id);
-      await axios.put(`https://localhost:7285/api/Rezervimi/Update/${rezervimi.id}`, {
-        id: rezervimi.id,
-        emriPasagjerit:emriPasagjerit,
-        mbiemriPasagjerit:mbiemriPasagjerit,
-        email:email,
-        cmimi: cmimi,
-        klasi: klasi,
-        currency: currency,
-        kthyese: kthyese,
-       
-        fluturimiId: fluturimiId,
-        data_e_Rezervimit: data_e_Rezervimit,
-        data_e_Kthimit: data_e_Kthimit,
-      });
+      await axios.put(
+        `https://localhost:7285/api/Rezervimi/Update/${rezervimi.id}`,
+        {
+          id: rezervimi.id,
+          emriPasagjerit: emriPasagjerit,
+          mbiemriPasagjerit: mbiemriPasagjerit,
+          email: email,
+          cmimi: cmimi,
+          klasi: klasi,
+          currency: currency,
+          kthyese: kthyese,
+
+          fluturimiId: fluturimiId,
+          data_e_Rezervimit: data_e_Rezervimit,
+          data_e_Kthimit: data_e_Kthimit,
+        }
+      );
       showAndHideAlert("Rezervimi është edituar me sukses!");
       clearForm();
       loadReservations();
@@ -139,17 +150,32 @@ function Rezervimet() {
     }, 3000); // Hide the alert after 3 seconds
   }
   // Kushti per kontrollimin nese eshte admin
-  if (!decodedToken || decodedToken.role !== 'admin') {
+  if (!decodedToken || decodedToken.role !== "admin") {
     return (
       <div className="container">
- <h1 style={{ textAlign: 'center', fontFamily: 'Times New Roman, serif', fontWeight: 'bold',position: 'relative', marginTop:'250px'}}>
-      Ju nuk keni akses në këtë faqe!
-    </h1>  
-    </div>
+        <h1
+          style={{
+            textAlign: "center",
+            fontFamily: "Times New Roman, serif",
+            fontWeight: "bold",
+            position: "relative",
+            marginTop: "250px",
+          }}
+        >
+          Ju nuk keni akses në këtë faqe!
+        </h1>
+      </div>
     );
   }
   return (
-    <div className="container-fluid" style={{ backgroundColor: "#004687", minHeight: "100vh", backgroundSize: "cover" }}>
+    <div
+      className="container-fluid"
+      style={{
+        backgroundColor: "#004687",
+        minHeight: "100vh",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="row">
         {toggle && (
           <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
@@ -177,41 +203,41 @@ function Rezervimet() {
                     }}
                   />
                   <div className="form-group">
-                  <label className="label">Emri i Pasagjerit</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="emriPasagjerit"
-                    value={emriPasagjerit}
-                    onChange={(event) => {
-                      setEmriPasagjerit(event.target.value);
-                    }}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="label">Mbiemri i Pasagjerit</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="mbiemriPasagjerit"
-                    value={mbiemriPasagjerit}
-                    onChange={(event) => {
-                      setMbiemriPasagjerit(event.target.value);
-                    }}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="label">Email</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                  />
-                </div>
+                    <label className="label">Emri i Pasagjerit</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="emriPasagjerit"
+                      value={emriPasagjerit}
+                      onChange={(event) => {
+                        setEmriPasagjerit(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="label">Mbiemri i Pasagjerit</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="mbiemriPasagjerit"
+                      value={mbiemriPasagjerit}
+                      onChange={(event) => {
+                        setMbiemriPasagjerit(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="label">Email</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="email"
+                      value={email}
+                      onChange={(event) => {
+                        setEmail(event.target.value);
+                      }}
+                    />
+                  </div>
                   <label className="label">Klasi</label>
                   <select
                     className="form-control"
@@ -229,7 +255,8 @@ function Rezervimet() {
                 </div>
                 <div className="form-group">
                   <label className="label">Cmimi</label>
-                  <input disabled
+                  <input
+                    disabled
                     type="text"
                     className="form-control"
                     id="cmimi"
@@ -239,38 +266,49 @@ function Rezervimet() {
                     }}
                   />
                 </div>
-                
 
                 <div className="form-group">
-              <label className="label mr-4" style={{ marginRight: '10px' }} >Currency</label>
-              <div className="form-check form-check-inline ml-2">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="eurCheckbox"
-                  checked={currency === "EUR"}
-                  onChange={() => setCurrency("EUR")}
-                />
-                <label className="form-check-label white-text" htmlFor="eurCheckbox" style={{color: 'white'}}>
-                  EUR
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="usdCheckbox"
-                  checked={currency === "USD"}
-                  onChange={() => setCurrency("USD")}
-                />
-                <label className="form-check-label white-text" htmlFor="usdCheckbox" style={{color: 'white'}}>
-                  USD
-                </label>
-              </div>
-            </div>
+                  <label className="label mr-4" style={{ marginRight: "10px" }}>
+                    Currency
+                  </label>
+                  <div className="form-check form-check-inline ml-2">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="eurCheckbox"
+                      checked={currency === "EUR"}
+                      onChange={() => setCurrency("EUR")}
+                    />
+                    <label
+                      className="form-check-label white-text"
+                      htmlFor="eurCheckbox"
+                      style={{ color: "white" }}
+                    >
+                      EUR
+                    </label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="usdCheckbox"
+                      checked={currency === "USD"}
+                      onChange={() => setCurrency("USD")}
+                    />
+                    <label
+                      className="form-check-label white-text"
+                      htmlFor="usdCheckbox"
+                      style={{ color: "white" }}
+                    >
+                      USD
+                    </label>
+                  </div>
+                </div>
 
-                <div className="form-group" >
-                  <label className="label" style={{ marginRight: '10px' }}>Kthyese</label>
+                <div className="form-group">
+                  <label className="label" style={{ marginRight: "10px" }}>
+                    Kthyese
+                  </label>
                   <input
                     type="checkbox"
                     className="form-check-input"
@@ -310,27 +348,34 @@ function Rezervimet() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="label" >Fluturimi</label>
-                  <select style={{ color: 'black' }}
+                  <label className="label">Fluturimi</label>
+                  <select
+                    style={{ color: "black" }}
                     className="form-control"
                     id="fluturimi"
                     value={fluturimiId}
                     onChange={(event) => setFluturimiId(event.target.value)}
                   >
-                    <option value="" style={{ color: 'black' }}>Select a flight</option>
+                    <option value="" style={{ color: "black" }}>
+                      Select a flight
+                    </option>
                     {fluturimet.map((fluturimi) => (
-                      <option key={fluturimi.id} value={fluturimi.id} style={{ color: 'black' }}>
+                      <option
+                        key={fluturimi.id}
+                        value={fluturimi.id}
+                        style={{ color: "black" }}
+                      >
                         {fluturimi.id}
                       </option>
                     ))}
                   </select>
                 </div>
 
-                
-
                 <div>
-                 
-                  <button className="btn btn-warning m-4 button" onClick={update}>
+                  <button
+                    className="btn btn-warning m-4 button"
+                    onClick={update}
+                  >
                     Update
                   </button>
                 </div>
@@ -342,7 +387,9 @@ function Rezervimet() {
             {isAlertVisible && (
               <div
                 className={`alert ${
-                  alertMessage.includes("Error") ? "alert-danger" : "alert-success"
+                  alertMessage.includes("Error")
+                    ? "alert-danger"
+                    : "alert-success"
                 }`}
               >
                 {alertMessage}
@@ -358,15 +405,15 @@ function Rezervimet() {
                     <th scope="col">Email</th>
                     <th scope="col">Klasi</th>
                     <th scope="col">Cmimi </th>
-                    <th ></th>
+                    <th></th>
                     <th scope="col">Currency</th>
-                    <th ></th>
+                    <th></th>
                     <th scope="col">Lloji</th>
-                    <th ></th>
+                    <th></th>
                     <th scope="col">Data e Rezervimit</th>
                     <th scope="col">Data e Kthimit</th>
                     <th scope="col">FluturimiID</th>
-                   
+
                     <th scope="col">Opsionet</th>
                   </tr>
                 </thead>
@@ -382,12 +429,15 @@ function Rezervimet() {
                       <td></td>
                       <td>{rezervimi.currency}</td>
                       <td></td>
-                      <td>{rezervimi.kthyese ? 'Kthyese' : 'NjeDrejtim'}</td>
+                      <td>{rezervimi.kthyese ? "Kthyese" : "NjeDrejtim"}</td>
                       <td></td>
                       <td>{rezervimi.data_e_Rezervimit}</td>
-                      <td>{rezervimi.kthyese ? rezervimi.data_e_Kthimit : '-'}</td>
+                      <td>
+                        {rezervimi.data_e_Kthimit
+                          ? rezervimi.data_e_Kthimit
+                          : "-"}
+                      </td>
                       <td>{rezervimi.fluturimiId}</td>
-                     
 
                       <td>
                         <div className="button-container">
@@ -417,8 +467,6 @@ function Rezervimet() {
       </div>
     </div>
   );
-
-  
 }
 
 export default Rezervimet;
